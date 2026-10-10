@@ -4,7 +4,7 @@ import requests
 import numpy as np
 import pandas as pd
 import streamlit as st
-
+import fitz
 from PIL import Image, ImageOps, ImageEnhance, ImageFilter
 import pytesseract
 
