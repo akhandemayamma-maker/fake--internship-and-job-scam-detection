@@ -7,7 +7,7 @@ import streamlit as st
 import fitz
 from PIL import Image, ImageOps, ImageEnhance, ImageFilter
 import pytesseract
-
+import shutil
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
@@ -30,10 +30,16 @@ st.set_page_config(
 # ============================================================
 # TESSERACT CONFIGURATION
 # ============================================================
+import os
 
-TESSERACT_PATH = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+if os.name == "nt":
+    TESSERACT_PATH = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+else:
+    TESSERACT_PATH = shutil.which("tesseract") or "/usr/bin/tesseract"
 
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
+
 
 
 # ============================================================
